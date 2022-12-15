@@ -111,7 +111,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6024710702900468905}
-  - component: {fileID: 130055828972158711}
+  - component: {fileID: 6700275825455472120}
+  - component: {fileID: 9035699867790883170}
   m_Layer: 3
   m_Name: Settler
   m_TagString: Untagged
@@ -134,16 +135,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &130055828972158711
-BoxCollider:
+--- !u!114 &6700275825455472120
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6024710702900468902}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.5316274, z: 0.27435887}
-  m_Center: {x: 0, y: 0.84465516, z: -0.04596913}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37bda0325433a9444a389059c53f0666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Data:
+    Name: 
+    Job: 0
+    Health: 50
+  Selected: 0
+  roomLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  agent: {fileID: 9035699867790883170}
+--- !u!195 &9035699867790883170
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024710702900468902}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 10
+  m_Acceleration: 999999
+  avoidancePriority: 50
+  m_AngularSpeed: 999999
+  m_StoppingDistance: 0.5
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 1.69
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
