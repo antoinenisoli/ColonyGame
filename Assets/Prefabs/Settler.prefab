@@ -151,10 +151,10 @@ MonoBehaviour:
     Name: 
     Job: 0
     Health: 50
-  Selected: 0
+  Selected: 1
   roomLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   agent: {fileID: 9035699867790883170}
 --- !u!195 &9035699867790883170
 NavMeshAgent:
@@ -166,7 +166,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 10
+  m_Speed: 7
   m_Acceleration: 999999
   avoidancePriority: 50
   m_AngularSpeed: 999999
