@@ -28,8 +28,11 @@ public class Settler : Entity
 {
     public SettlerData Data;
     [SerializeField] bool selected;
-    [SerializeField] LayerMask roomLayer;
     [SerializeField] NavMeshAgent agent;
+    [SerializeField] Material outlineMat;
+
+    Material spriteMaterial;
+    SpriteRenderer spriteRenderer;
     ColonyRoom currentRoom;
     Animator anim;
 
@@ -38,15 +41,21 @@ public class Settler : Entity
         get => selected; 
         set
         {
-
+            spriteRenderer.material = value ? outlineMat : spriteMaterial;
             selected = value;
         }
     }
 
+    public ColonyRoom Room { get => currentRoom; set => currentRoom = value; }
+
     private void Awake()
     {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        spriteMaterial = spriteRenderer.material;
+
         anim = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        Selected = false;
     }
 
     private void Start()
@@ -85,36 +94,6 @@ public class Settler : Entity
 
     private void Update()
     {
-        if (Selected)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                bool hit = Physics.Raycast(ray, out RaycastHit hitInfo, Mathf.Infinity, roomLayer);
-                if (hit)
-                {
-                    ColonyRoom room = hitInfo.transform.GetComponent<ColonyRoom>();
-                    if (room)
-                    {
-                        if (currentRoom)
-                        {
-                            if (currentRoom == room)
-                                return;
-
-                            currentRoom.RemoveSettler(this);
-                            currentRoom = null;
-                        }
-
-                        if (room.AddSettler(this, out Vector3 newPosition))
-                        {
-                            Move(newPosition);
-                            currentRoom = room;
-                        }
-                    }
-                }
-            }
-        }
-
         ManageRotation();
         Animation();
     }
