@@ -502,11 +502,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1aee6bb4dd83e4986bfec172c03138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions:
-  - {fileID: 8791528461413963471}
-  - {fileID: 1004873748811905985}
-  - {fileID: 5465175512643657587}
-  - {fileID: 2704440955526006236}
+  roomPos:
+  - roomPoint: {fileID: 8791528461413963471}
+    available: 0
+    occupant: {fileID: 0}
+  - roomPoint: {fileID: 1004873748811905985}
+    available: 0
+    occupant: {fileID: 0}
+  - roomPoint: {fileID: 5465175512643657587}
+    available: 0
+    occupant: {fileID: 0}
+  - roomPoint: {fileID: 2704440955526006236}
+    available: 0
+    occupant: {fileID: 0}
+  settlers: []
 --- !u!65 &9173780852801145954
 BoxCollider:
   m_ObjectHideFlags: 0

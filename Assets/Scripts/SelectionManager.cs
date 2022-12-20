@@ -16,7 +16,7 @@ public class SelectionManager : MonoBehaviour
         }
     }
 
-    void LookForInteractable(RaycastHit[] hits)
+    bool LookForInteractable(RaycastHit[] hits)
     {
         foreach (var hit in hits)
         {
@@ -28,7 +28,7 @@ public class SelectionManager : MonoBehaviour
                     if (selectedSettler == settler)
                     {
                         Unselect();
-                        return;
+                        return true;
                     }
 
                     selectedSettler.Selected = false;
@@ -37,11 +37,11 @@ public class SelectionManager : MonoBehaviour
 
                 selectedSettler = settler;
                 settler.Selected = true;
-                return;
+                return true;
             }
         }
 
-        Unselect();
+        return false;
     }
 
     void LookForRoom(RaycastHit[] hits)
@@ -82,10 +82,15 @@ public class SelectionManager : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity, selectableLayer);
 
-            if (!selectedSettler)
-                LookForInteractable(hits);
+            if (selectedSettler)
+            {
+                if (!LookForInteractable(hits))
+                    LookForRoom(hits);
+            }
             else
-                LookForRoom(hits);
+            {
+                LookForInteractable(hits);
+            }
         }
     }
 }
