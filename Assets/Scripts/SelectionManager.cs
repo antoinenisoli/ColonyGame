@@ -65,7 +65,7 @@ public class SelectionManager : MonoBehaviour
                         selectedSettler.Room = null;
                     }
 
-                    selectedSettler.Move(newPosition);
+                    selectedSettler.SetDestination(newPosition);
                     selectedSettler.Room = room;
                     return;
                 }

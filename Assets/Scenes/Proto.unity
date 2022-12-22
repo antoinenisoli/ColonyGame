@@ -1162,6 +1162,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855679462}
   m_CullTransparentMesh: 1
+--- !u!1 &869553995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 869553996}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &869553996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869553995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 66.84, y: -3.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5761549046779201953}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &885539561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,7 +1627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005663188}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -23.2, y: 1.9, z: -1.9}
+  m_LocalPosition: {x: 38.24999, y: 1.9, z: -1.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5761549046779201953}
@@ -2347,6 +2377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Money: 0
+  MaxSettlers: 200
   namesFile: {fileID: 4900000, guid: 3075a24c2090216438428aa748916c7a, type: 3}
   Settlers: []
 --- !u!1 &1572036460
@@ -2678,7 +2709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782675916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.45, y: 0, z: 0}
+  m_LocalPosition: {x: 69.89999, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1862436893}
@@ -3370,7 +3401,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8536636697133650161}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -36.2814, y: 3.13, z: 0.7281}
+  m_LocalPosition: {x: 25.16859, y: 3.13, z: 0.7281}
   m_LocalScale: {x: 89.703636, y: 14.821739, z: 0.23236}
   m_Children: []
   m_Father: {fileID: 5761549046779201953}
@@ -3432,6 +3463,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5761549046779201953}
+  - component: {fileID: 5761549046779201954}
   m_Layer: 0
   m_Name: Entrance
   m_TagString: Untagged
@@ -3447,7 +3479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5761549046779201952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: -48.78, z: -32.9}
+  m_LocalPosition: {x: -54.5, y: -48.78, z: -32.9}
   m_LocalScale: {x: 0.7178782, y: 0.6696, z: 0.6696}
   m_Children:
   - {fileID: 5761549048070621213}
@@ -3455,9 +3487,25 @@ Transform:
   - {fileID: 4871574859688346524}
   - {fileID: 1005663189}
   - {fileID: 1782675917}
+  - {fileID: 869553996}
   m_Father: {fileID: 903436694}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5761549046779201954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761549046779201952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066625958b7f73a48b13f7fa2468ee88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settlerPrefab: {fileID: 6024710702900468902, guid: 295e7796f494c1f4b932c283884bc383, type: 3}
+  spawnDelay: 5
+  spawnPoint: {fileID: 869553996}
 --- !u!1 &5761549046828193249
 GameObject:
   m_ObjectHideFlags: 0
@@ -3710,7 +3758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5761549047760857221}
   m_LocalRotation: {x: 0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -36.2814, y: -3.0533001, z: 0.7281}
+  m_LocalPosition: {x: 25.16859, y: -3.0533001, z: 0.7281}
   m_LocalScale: {x: 89.703636, y: 14.821739, z: 0.23236}
   m_Children: []
   m_Father: {fileID: 5761549046779201953}
@@ -3863,6 +3911,7 @@ MonoBehaviour:
     locked: 0
     occupant: {fileID: 0}
   settlers: []
+  resourceCollected: 0
   produceDelay: 4
 --- !u!1 &5761549048070621202
 GameObject:
@@ -3939,7 +3988,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5761549048070621202}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.6968, y: 0, z: 7.7}
+  m_LocalPosition: {x: 27.75319, y: 0, z: 7.7}
   m_LocalScale: {x: 84.538345, y: 6.2865, z: 1}
   m_Children: []
   m_Father: {fileID: 5761549046779201953}

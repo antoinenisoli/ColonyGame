@@ -61,9 +61,15 @@ public class Settler : Entity
     private void Start()
     {
         Data.Randomize();
+        ColonyManagement.Instance.RegisterNewSettler(this);
     }
 
-    public void Move(Vector3 newPosition)
+    private void OnDestroy()
+    {
+        ColonyManagement.Instance.RemoveSettler(this);
+    }
+
+    public void SetDestination(Vector3 newPosition)
     {
         agent.SetDestination(newPosition);
     }

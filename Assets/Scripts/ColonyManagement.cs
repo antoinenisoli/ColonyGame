@@ -7,6 +7,7 @@ public class ColonyManagement : MonoBehaviour
     public static ColonyManagement Instance;
 
     public int Money;
+    public int MaxSettlers = 200;
     [SerializeField] TextAsset namesFile;
     [SerializeField] Queue<string> randomNames = new Queue<string>();
     public List<Settler> Settlers = new List<Settler>();
@@ -17,6 +18,16 @@ public class ColonyManagement : MonoBehaviour
             Instance = this;
 
         RandomNames();
+    }
+
+    public void RegisterNewSettler(Settler settler)
+    {
+        Settlers.Add(settler);
+    }
+
+    public void RemoveSettler(Settler settler)
+    {
+        Settlers.Remove(settler);
     }
 
     private void RandomNames()
