@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraPanningController : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [SerializeField] Vector3 minPosition, maxPosition;
     [SerializeField] float moveSpeed = 10f, scrollSpeed = 20f, followSpeed = 10f;
-    [SerializeField] Vector3 desiredPosition;
+    Vector3 desiredPosition;
 
     private void Start()
     {
@@ -28,12 +28,12 @@ public class CameraPanningController : MonoBehaviour
 
         Vector3 zoom = new Vector3(0, 0, zInput) * Time.deltaTime * scrollSpeed;
         Vector3 movement = new Vector3(xInput, yInput).normalized * Time.deltaTime * moveSpeed;
-        Vector3 newPosition = transform.position + movement + zoom;
         desiredPosition += movement + zoom;
-        desiredPosition = GameDevHelper.ClampedVector(newPosition, minPosition, maxPosition);
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
+        desiredPosition = GameDevHelper.ClampedVector(desiredPosition, minPosition, maxPosition);
+    }
 
-        /*newPosition = GameDevHelper.ClampedVector(newPosition, minPosition, maxPosition);
-        transform.position = newPosition;*/
+    private void LateUpdate()
+    {
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
     }
 }
